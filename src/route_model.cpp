@@ -60,7 +60,6 @@ RouteModel::Node &RouteModel::FindClosestNode(float x, float y) {
     float min_dist = std::numeric_limits<float>::max();
     float dist;
     int closest_idx;
-
     for (const Model::Road &road : Roads()) {
         if (road.type != Model::Road::Type::Footway) {
             for (int node_idx : Ways()[road.way].nodes) {
@@ -72,6 +71,5 @@ RouteModel::Node &RouteModel::FindClosestNode(float x, float y) {
             }
         }
     }
-
     return SNodes()[closest_idx];
 }
