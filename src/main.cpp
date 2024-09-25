@@ -38,7 +38,9 @@ void get_value(float& value, std::string name) {
     do {
         std::cout<<"Enter value for "<<name<<": ";
         std::cin>>value;
-        if (!is_number(std::to_string(value)) || value < 0 || value > 100) {
+        if (!is_number(std::to_string(value)) || std::cin.fail() || value < 0 || value > 100) {
+            std::cin.clear();  // Clear the error state
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  // Discard bad input
             std::cout<<"Invalid input. Please enter a number."<<std::endl;
         } else {
             is_valid = true;
